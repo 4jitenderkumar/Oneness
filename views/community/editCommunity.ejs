@@ -1,0 +1,166 @@
+<% layout('layout') %>
+
+<% include ../partials/navbar %>
+
+<div id="wrapper">
+<!-- Sidebar -->
+<% include ../partials/sidebar2 %>
+<div id="page-content-wrapper" style="padding:0;margin-top:60px"> <!--Margin Top is new-->
+    <div class="container-fluid page-content-div" style="padding:0">
+       <div class="row">
+          <div class="col-lg-12 scoll-possible" style="padding:0">
+
+
+
+<div class="community-header-top communityheader-profile-mobile" style="padding-top:6px;position:relative;">
+<div class="container pc">
+
+</div>
+<center>
+   <div class="communityprofile-name-mobile" style="max-height:40px;overflow:scroll">
+     <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4" style="color:white">
+        finance club
+     </a>
+   </div>
+</center>
+
+<center>
+ <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4">
+   <img src="" class="mobile img-communityprofile-pic allSides" style="background:#fff" />
+ </a>
+</center>
+
+</div>
+
+<div class="container community-profile-conatiner">
+<div class="col-sm-2 col-xs-12 center-mobile pc">
+<a href="/community/communityprofile/5ba5b046393e737dbe66f5d4">
+<img src="" class="img-communityprofile-pic allSides" style="background:#fff" />
+</a>
+</div>
+
+<div class="col-sm-8 communityprofile-name-pc">
+<a href="/community/communityprofile/5ba5b046393e737dbe66f5d4" class="communityprofile-name-pc">
+    <%= data.name %>
+</a>
+</div>
+
+
+<div class="col-sm-2 col-xs-12 center-mobile" style="padding-top:10px;float:right">
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle commuity-profile-menu-btn" type="button" data-toggle="dropdown">
+<i class="fa fa-bars"></i>
+</button>
+<ul style="margin-top:40px">
+
+
+ <li>
+     <a href="/community/discussion/<%= id %>" class="community-profile-option-btn">
+       Discussions
+     </a>
+ </li>
+
+
+
+ <li>
+     <a href="/community/managecommunity/<%= id %>" class="community-profile-option-btn">
+       Manage Community
+     </a>
+ </li>
+
+
+ <li>
+     <a href="/community/communityprofile/<%= id %>" class="community-profile-option-btn">
+       Community Profile
+     </a>
+ </li>
+
+ <li>
+     <a href="/community/communitymembers/<%= id %>" class="community-profile-option-btn">
+       Community Members
+     </a>
+ </li>
+
+</ul>
+</div>
+</div>
+
+</div>
+<center>
+<hr style="border-top:2px solid #E6E6E6;width:85%;margin-top:0">
+</center>
+
+<head>
+<link rel="stylesheet" href="css/trumbowyg.css" />
+</head>
+
+<div class='container'>
+<div style="margin-top:30px;">
+ 
+ <div class="col-12">
+       <div class="card allSidesSoft">
+           <div class="card-body">
+
+                <% if(noErrors) {%>
+                    <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                            &times;
+                        </a>
+                        <%= success %><!-- with = SIGN we can display messages-->
+                    </div>
+                <% } %>
+
+             <br />
+             <form class="communitypicform" enctype="multipart/form-data" method="post">
+               <div class="panel-group">
+                    <input type="file" name="image" /> 
+                 <div class="form-group">
+                         <label>Community Name :</label>
+                         <input type="text" value="<%= data.name %>" class="form-control" name="name" maxlength="70" required />
+                 </div>
+
+                 <div class="form-group">
+                     <label>Community Rule:</label>
+                     
+                     
+                       
+                     
+                       <% if(data.request.length == 0) {%>
+                     <select class="form-control" name="rule">
+                              
+                        <option value='permission' selected>Private</option>
+                      
+                      
+                        <option value='direct'>Dirrect</option>
+                      
+                    </select>
+                       <% } %>
+                     
+                       
+                         
+                       <% if(data.request.length > 0) {%>
+                       <input type="text" class="form-control" value="Please do some action against pending requests to make community public" disabled/>
+                    <% } %>                  
+                          
+                 </div>
+
+                 <div class="form-group">
+                         <label>Community Description:</label>
+                         <textarea type="text" class="form-control" rows="15" name="description" id="description" required><%= data.description %></textarea>
+                 </div>
+               </div>
+               <div class="form-group">
+                   <input type="submit" class="btn btn-primary pull-right btnEditForm" style="margin:1px" value="Update" />
+               </div>
+             </form>
+           </div>
+      </div>
+   </div>
+</div>
+</div>
+<br />
+
+</div>
+</div>
+</div>
+</div>

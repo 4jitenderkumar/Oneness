@@ -1,0 +1,34 @@
+	
+  <nav class="navbar navbar-default-bar no-margin navbar-bar-head-fixed" id="nav-header">
+
+    <div class="navbar-header fixed-brand">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                   <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+              </button>
+      
+        <span class="label label-success mobile" style="margin-top:20px;float:right">Admin</span>
+      
+       <a class="navbar-brand" href="#">Oneness</a>
+    </div>
+
+          <div class="none-mobile-view-dp">
+                   <img src="/Upload/Profile/<%= user.image %>" style="height: 40px" class="profilePic">
+        
+           <span class="label label-success" style="float:right;margin-top:22px;margin-left:5px"><%= user.name %></span>
+        
+        <span class="label label-warning" style="float:right;margin-top:22px;"><%= user.role %></span>
+           </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <ul class="nav navbar-nav">
+          <li class="active">
+            
+               <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-pc">
+                                 <span class="glyphicon glyphicon-th-large" aria-hidden="true">
+                                 </span>
+               </button>
+             
+          </li>
+       </ul>
+    </div>
+</nav>

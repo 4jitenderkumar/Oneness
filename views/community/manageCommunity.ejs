@@ -1,0 +1,199 @@
+<% layout('layout') %>
+
+<% include ../partials/navbar %>
+
+<div id="wrapper">
+<!-- Sidebar -->
+<% include ../partials/sidebar2 %>
+<div id="page-content-wrapper" style="padding:0;margin-top:60px"> <!--Margin Top is new-->
+    <div class="container-fluid page-content-div" style="padding:0">
+       <div class="row">
+          <div class="col-lg-12 scoll-possible" style="padding:0">
+
+
+
+<div class="community-header-top communityheader-profile-mobile" style="padding-top:6px;position:relative;">
+<div class="container pc">
+
+</div>
+<center>
+   <div class="communityprofile-name-mobile" style="max-height:40px;overflow:scroll">
+     <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4" style="color:white">
+        <%= data.name %>
+     </a>
+   </div>
+</center>
+
+<center>
+ <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4">
+   <img src="/Upload/CommunityProfile/1540508025687.jpeg" class="mobile img-communityprofile-pic allSides" style="background:#fff" />
+ </a>
+</center>
+
+</div>
+
+<div class="container community-profile-conatiner">
+<div class="col-sm-2 col-xs-12 center-mobile pc">
+<a href="/community/communityprofile/5ba5b046393e737dbe66f5d4">
+<img src="/Upload/CommunityProfile/1540508025687.jpeg" class="img-communityprofile-pic allSides" style="background:#fff" />
+</a>
+</div>
+
+<div class="col-sm-8 communityprofile-name-pc">
+<a href="/community/communityprofile/5ba5b046393e737dbe66f5d4" class="communityprofile-name-pc">
+    <%= data.name %>
+</a>
+</div>
+
+
+<div class="col-sm-2 col-xs-12 center-mobile" style="padding-top:10px;float:right">
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle commuity-profile-menu-btn" type="button" data-toggle="dropdown">
+<i class="fa fa-bars"></i>
+</button>
+<ul class="dropdown-menu custom-commuity-dropdown dropdown-menu-right" style="margin-top:40px">
+
+
+ <li>
+     <a href="/community/discussion/<%= id %>" class="community-profile-option-btn">
+       Discussions
+     </a>
+ </li>
+
+   <li>
+       <a href="/community/manageCommunity/<%= id %>" class="community-profile-option-btn">
+         Manage Community
+       </a>
+   </li>
+
+
+ <li>
+     <a href="/community/communityprofile/<%= id %>" class="community-profile-option-btn">
+       Community Profile
+     </a>
+ </li>
+
+ <li>
+     <a href="/community/communitymembers/<%= id %>" class="community-profile-option-btn">
+       Community Members
+     </a>
+ </li>
+
+</ul>
+</div>
+</div>
+
+</div>
+<center>
+<hr style="border-top:2px solid #E6E6E6;width:85%;margin-top:0">
+</center>
+
+
+<!--=========================Message For Rejection==================================-->
+<div class="modal fade" id="popUpManageCommunityMessage" role="dialog" style="z-index:9999">
+<div class="modal-dialog">
+ <div class="modal-content">
+   <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+     <h4 class="modal-title" id="mailheader">Reject Message</h4>
+   </div>
+   <div class="modal-body">
+   <!------------------------------------------------------------------------------------>
+   <div class="form-horizontal"> <!-- form -->
+     <div class="form-group">
+       <div class="col-sm-12">
+         <center>
+           <p id="fullNameMessagePop"></p>
+         </center>
+       </div>
+     </div>
+     <div class="form-group">
+       <div class="col-sm-12"><!--Body-->
+         <textarea type="text" class="form-control" id="messageBoxPop" style="resize: none;height:200px" required></textarea>
+       </div>
+     </div>
+     <div class="form-group">
+       <div class="col-sm-offset-2 col-sm-10">
+         <button class="btn btn-default" id="sendButtonPop" style="float:right">Send And Reject</button>
+       </div>
+     </div>
+   </div>
+   <!---------------------------------------------------------------------------------->
+   </div>
+ </div>
+</div>
+</div>
+
+<div class="container">
+<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12" style="padding-bottom:5px;border-bottom:1px solid #c4c4c4">
+<nonLink class="manageCommunity-head-btn" style="cursor: context-menu;">
+Manage Community
+</nonLink>
+<a href="/community/invite/<%= id %>" style="float:right;font-weight:600">
+Invite Users
+</a>
+<% if(!isAdmin) {%>
+<a class="pc" href="/community/editCommunity/<%= id %>" style="float:right;font-weight:600;margin-right:15px">
+Edit Community
+</a>
+<% } %>
+</div>
+<div class="col-sm-12 col-xs-12 col-lg-12 col-md-12" style="padding:10px 0 0 0;">
+
+<div class="col-sm-3 manageCommunity-commuity-div" style="padding:0">
+
+ <div class="panel-heading allSidesSoft center-all mobile" style="background:#fff;margin-bottom:5px">
+     <a class="btn btn-primary editcommunity-btn">
+       Edit Commuity
+     </a>
+ </div>
+
+<div class="panel-body allSidesSoft" style="background:#fff">
+   <a class="manageCommunity-child-btn manageCommunity-btn-active" onclick="UserList('<%=id %>')" id="UsersShowBtn">
+     Users (<%= data.user.length %>)
+   </a>
+   <br>
+   <a class="manageCommunity-child-btn" onclick="AllAdmins('<%=id %>')" id="AdminsShowBtn">
+     Admins (<%= data.admin.length + 1 %>)
+   </a>
+   
+   
+     
+       
+     
+   
+     
+       
+     
+   
+     
+       
+     
+   
+     
+   
+     
+     <br>
+     <a class="manageCommunity-child-btn" onclick="Requests('<%=id %>')" id="requestedUserShowBtn">
+       Requests (<%= data.request.length %>)
+     </a>
+   
+   <br>
+   <a class="manageCommunity-child-btn" onclick="Invited('<%=id %>')" id="invitedUserShowBtn">
+     Invited Users (<%= data.invitedUser.length %>)
+   </a>
+</div>
+<br />
+</div>
+<div class="col-sm-9">
+<div id='comlist'>
+
+
+</div>
+</div>
+</div>
+
+
+</div> <!--Header-->
+
+

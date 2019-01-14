@@ -1,0 +1,173 @@
+<% layout('layout') %>
+
+<nav class="navbar navbar-default-bar no-margin" id="nav-header">
+
+    <div class="navbar-header fixed-brand">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                   <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+              </button>
+      
+       <a class="navbar-brand" href="#">Oneness</a>
+    </div>
+
+          <div class="none-mobile-view-dp">
+                   <img src="" style="height: 40px" class="profilePic">
+        
+        <span class="label label-warning" style="float:right;margin-top:22px;">z</span>
+           </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+       <ul class="nav navbar-nav">
+          <li class="active">
+            
+               <button onclick="logout()" class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-pc">
+                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true">
+                                 </span>
+               </button>
+             
+          </li>
+       </ul>
+    </div>
+</nav>
+
+
+
+
+
+<div id="page-content-wrapper" style="padding:0;margin-top:60px"> <!--Margin Top is new-->
+    <div class="container-fluid page-content-div" style="padding:0">
+       <div class="row">
+          <div class="col-lg-12 scoll-possible" style="padding:0">
+
+
+
+
+<style>
+.form-control[disabled]{
+background-color: #f5f5f5;
+opacity: 1;
+}
+.select2-dropdown{
+display:none;
+}
+</style>
+
+<div class="profile-pic-center-main-div mobile">
+<img src="/Upload/Profile/default.png" class="profile-pic-center allSides" />
+</div>
+
+
+<div class='container'>
+<div style="margin-top:30px;">
+<div class="col-12">
+     <div class="card allSidesSoft">
+         <div class="card-body">
+
+           <br />
+           <form method="post" action="/detail" enctype="multipart/form-data" id="formIDD">
+             <div class="panel-group">
+               <!--Form panel-->
+               <div class="panel panel-default editUserPanel">
+                 <div class="panel-heading">Basic Info</div>
+                   <div class="panel-body">
+                        <input type="file" name="image" />  
+                       <div class="form-group">
+                               <label>Email :</label>
+                               <input type="text" value="<%= user.email %>" class="form-control" name="email" disabled="true"  />
+                       </div>
+                       <div class="form-group">
+                           <label>Name :</label>
+                           <input type="text" value="<%= user.name %>" class="form-control" name="name" autocomplete="off" required />
+                       </div>
+                       <div class="form-group col-sm-5" style="padding:0">
+                           <label>DOB :</label>
+                           <input class="form-control dobDate" id="date" value='' name="dob" placeholder="MM/DD/YYYY" type="text" autocomplete="off" required/>
+                       </div>
+                       <div class="form-group col-sm-5 col-sm-push-2" style="padding:0">
+                               <label>Gender :</label>
+                               <select name="gender" class="form-control">
+                                   <optgroup label="Select Gender">
+                               
+                                   <option value="male">Male</option>
+                               
+
+                               
+                                   <option value="female">Female</option>
+                               
+
+                               
+                                   <option value="transgender">Transgender</option>
+                               
+                               </optgroup>
+                               </select>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="panel panel-default editUserPanel">
+                 <div class="panel-heading">Contact Info</div>
+                   <div class="panel-body">
+                     <div class="form-group">
+                             <label>Phone :</label>
+                             <input type="text" value="<%= user.phone %>" class="form-control" name="phone" maxlength="10" required />
+                     </div>
+                     <div class="form-group">
+                             <label>City :</label>
+                             <input type="text" value="<%= user.city %>" class="form-control" name="city" required />
+                     </div>
+                   </div>
+                 </div>
+
+                 <div class="panel panel-default editUserPanel">
+                   <div class="panel-heading">Personal Info</div>
+                     <div class="panel-body">
+
+                       <div class="form-group">
+                         <label>Interests :</label>
+                         <div class="tag-conatiner-custom-div">
+                           <select id="interestsEditor" name='interest' class="form-control input-sm select2-multiple" style="width:100%" multiple>
+                             <!--Tags option appended here-->
+                             
+                               
+
+                             
+                           </select>
+                         </div>
+                       </div>
+
+                       <div class="form-group">
+                               <label>Tell us a bit more about your journey:</label>
+                               <textarea type="text" value="<%= user.journey %>" class="form-control" name="journey"></textarea>
+                       </div>
+
+                       <div class="form-group">
+                               <label>What are your expectations from the communities?</label>
+                               <textarea type="text" value="<%= user.expectation %>" class="form-control" name="expectation"></textarea>
+                       </div>
+
+                     </div>
+                   </div>
+
+                 <br />
+
+                 <div class="form-group">
+                   
+                         <a href="/profile" class="btn btn-danger pull-right btnEditForm" style="margin:1px">Cancel</a>
+                         <input type="submit" class="btn btn-primary pull-right btnEditForm" style="margin:1px" value="Update" />
+                 </div>
+
+               </div>
+           </form>
+         </div>
+    </div>
+ </div>
+</div>
+</div>
+
+<br />
+
+</div>
+</div>
+</div>
+</div> <!--Header-->
+

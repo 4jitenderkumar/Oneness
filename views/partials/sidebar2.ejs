@@ -1,0 +1,69 @@
+<div id="sidebar-wrapper" style="margin-top:60px">
+    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+ 
+      <li class="mobile-view-dp">
+        <div style="margin-right: 10px">
+              <center>
+             <img src="" style="height: 60px;width: 60px;border-radius:50%">
+         </center>
+           </div>
+      </li>
+ 
+      <li class="onlyForPcNav">
+        <a  onclick="openSideNav()">
+          <span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-bars fa-stack-1x "></i>
+          </span>Oneness
+        </a>
+      </li>
+ 
+      
+ 
+      
+           <li id="edit-profile-nav">
+             <a href="/profile"><span class="fa-stack fa-lg pull-left">
+               <i class="fa fa-user fa-stack-1x "></i></span>
+               Arun Goyat
+             </a>
+           </li>
+       
+ 
+       
+ 
+       
+         <li id="community-panel-nav">
+            <a href="/community/communitypanel"><span class="fa-stack fa-lg pull-left">
+              <i class="fa fa-users fa-stack-1x "></i></span>Communities
+            </a>
+         </li>
+       
+       <% if(user.role == "admin" ) {%>
+         <li id="switch-asuser-nav">
+          <a onclick="switchState('Switch As Admin')"><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-toggle-on fa-stack-1x "></i></span>
+            Switch As Admin
+          </a>
+        </li>
+        <% } %>
+ 
+       
+ 
+       
+ 
+       
+ 
+       <li id="change-password-nav">
+         <a href="/changePassword"><span class="fa-stack fa-lg pull-left">
+           <i class="fa fa-lock fa-stack-1x "></i></span>
+           Change Password
+         </a>
+       </li>
+ 
+       <li>
+          <a onclick="logout()"><span class="fa-stack fa-lg pull-left">
+            <i class="fa fa-sign-out-alt fa-stack-1x "></i></span>Logout
+          </a>
+       </li>
+ 
+    </ul>
+ </div>

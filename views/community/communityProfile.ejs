@@ -1,0 +1,265 @@
+<% layout('layout') %>
+
+<% include ../partials/navbar %>
+
+<div id="wrapper">
+<!-- Sidebar -->
+<% include ../partials/sidebar2 %>
+<div id="page-content-wrapper" style="padding:0;margin-top:60px"> <!--Margin Top is new-->
+    <div class="container-fluid page-content-div" style="padding:0">
+       <div class="row">
+          <div class="col-lg-12 scoll-possible" style="padding:0">
+
+
+
+<div class="community-header-top communityheader-profile-mobile" style="padding-top:6px;position:relative;">
+<div class="container pc">
+
+  <% if(isMember  == 0 && isPending == 0) {%>
+  <button class="btn btn-info community-panel-btn joinBtn" data-id=1 style="float:right"> Join <i class="fa fa-plus"></i></button>
+  <% } %>
+
+  <% if(isPending  == 1) {%>
+    <button class="btn btn-info community-panel-btn joinBtn" data-id=1 style="float:right" disabled> Requested</button>
+    <% } %>
+
+</div>
+<center>
+   <div class="communityprofile-name-mobile" style="max-height:40px;overflow:scroll">
+     <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4" style="color:white">
+      <%= data.name %>
+     </a>
+   </div>
+</center>
+
+<center>
+ <a href="/community/communityprofile/5ba5b046393e737dbe66f5d4">
+   <img src="/Upload/CommunityProfile/1540508025687.jpeg" class="mobile img-communityprofile-pic allSides" style="background:#fff" />
+ </a>
+</center>
+
+</div>
+
+<div class="container community-profile-conatiner">
+<div class="col-sm-2 col-xs-12 center-mobile pc">
+<a href="/community/communityprofile/<%= id %>">
+<img src="/Upload/CommunityProfile/1540508025687.jpeg" class="img-communityprofile-pic allSides" style="background:#fff" />
+</a>
+</div>
+
+<div class="col-sm-8 communityprofile-name-pc">
+<a href="/community/communityprofile/<%= id %>" class="communityprofile-name-pc">
+<%= data.name %>
+</a>
+</div>
+
+<% if(isMember  == 1) {%>
+<div class="col-sm-2 col-xs-12 center-mobile" style="padding-top:10px;float:right">
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle commuity-profile-menu-btn" type="button" data-toggle="dropdown">
+<i class="fa fa-bars"></i>
+</button>
+<ul class="dropdown-menu custom-commuity-dropdown dropdown-menu-right" style="margin-top:40px">
+
+
+ <li>
+     <a href="/community/discussion/<%= id %>" class="community-profile-option-btn">
+       Discussions
+     </a>
+ </li>
+
+
+ <% if(isOwner) {%>
+  <li>
+    <a href="/community/manageCommunity/<%= id %>" class="community-profile-option-btn">
+      Manage Community
+    </a>
+</li>
+  <% }%>
+
+<% if(isAdmin) {%>
+ <li>
+     <a href="/community/manageCommunity/<%= id %>" class="community-profile-option-btn">
+       Manage Community
+     </a>
+ </li>
+<% } %>
+
+
+ <li>
+     <a href="/community/communityprofile/<%= id %>" class="community-profile-option-btn">
+       Community Profile
+     </a>
+ </li>
+
+ <li>
+     <a href="/community/communitymembers/<%= id %>" class="community-profile-option-btn">
+       Community Members
+     </a>
+ </li>
+
+</ul>
+</div>
+</div>
+<% } %>
+
+</div>
+<center>
+<hr style="border-top:2px solid #E6E6E6;width:85%;margin-top:0">
+</center>
+
+<style>
+.child-reply-input{
+display: none !important;
+}
+</style>
+<link rel='stylesheet' href='/css/Discussion.css' />
+<div class="container" style="width:94% !important">
+ 
+<div class="col-sm-3 col-xs-12">
+ <div class="panel panel-default allSidesSoft" style="border-radius:0">
+    <% if(isMember  == 1) {%>
+     <div class="panel-heading" style="border:0;border-radius:0">
+         Members
+         <a href="/community/communitymembers/<%= id %>" style="float:right">View all</a>
+          
+        </div>
+        <% } %>
+
+        <% if(isMember == 0 && isPending == 0) {%>
+          <div class="panel-heading" style="border:0;border-radius:0">
+          <button class="btn btn-info community-panel-btn joinBtn" data-id=1 style="background-color: #4CAF50;"> Join <i class="fa fa-plus"></i></button>
+             </div>
+             <% } %>
+
+             
+        <% if(isPending == 1) {%>
+          <div class="panel-heading" style="border:0;border-radius:0">
+
+          <button class="btn btn-info community-panel-btn joinBtn" data-id=1 style="background-color: #4CAF50;"> Requested </button>
+              </div>
+             <% } %>
+   
+     <% for(var i = 0; i < data.user.length; i++) {%> <!-- don't have to use equal sign while using loop-->
+    <%  if(i == 4) {%><!--beacuse we only want to show 4 users in profile page-->
+     <% break %>  
+     <% } %>
+
+      <div class="panel-body" style="border:0;border-radius:0">
+     <div class="col-sm-12 col-xs-12" style="padding:0" id="membersDiv-4joinedUser">
+         <div class="col-sm-6 col-xs-3 col-md-3 col-lg-3 center-all" style="padding:0;">
+           <a href="/community/viewprofile/<%= data.user[i]._id %>" class="communityProfileUserImage">
+             <img class="communityProfileUserImage allSidesSoft" src="/Upload/Profile/default.png" />
+           </a>
+         </div>
+     </div>
+   </div>
+
+   <% }%>
+
+
+   <div class="panel-footer community-panel-sideBtn-link">
+     
+         <a href="" >
+           <%= data.user.length %> Members
+         </a>
+         <% if(isMember  == 1) {%>
+         <a onclick="leaveCommunity('<%= id %>')" style="float:right;cursor:pointer">
+            Leave Community
+          </a>
+           <% } %>
+   </div>
+ </div>
+
+   <div class="panel panel-default allSidesSoft" style="border-radius:0">
+     <div class="panel-heading" style="border:0;border-radius:0">
+       Community Admins
+     </div>
+     <div class="panel-body" style="border:0;border-radius:0">
+       
+      <div id="commuity-owner-detail">
+        <div class="col-sm-12 col-xs-12" style="padding:0" id="membersDiv-4joinedUser">
+          <div class="col-sm-6 col-xs-3 col-md-3 col-lg-3 center-all" style="padding:0;">
+            <a href="/community/viewprofile/<%= data.owner._id %>" class="communityProfileUserImage">
+              <img class="communityProfileUserImage allSidesSoft" src="/Upload/Profile/default.png" />
+            </a>
+          </div>
+          <p>Owner</p>
+          <p><%= data.owner.name %></p>
+      </div>
+       </div>
+
+       <div id="commuity-admins-detail">
+          <% for(var i = 0; i < data.admin.length; i++) {%> <!-- don't have to use equal sign while using loop-->
+        <div class="col-sm-12 col-xs-12" style="padding:0" id="membersDiv-4joinedUser">
+          <div class="col-sm-6 col-xs-3 col-md-3 col-lg-3 center-all" style="padding:0;">
+            <a href="/community/viewprofile/<%= data.admin[i]._id %>" class="communityProfileUserImage">
+              <img class="communityProfileUserImage allSidesSoft" src="/Upload/Profile/default.png" />
+            </a>
+          </div>
+          <p>Admin</p>
+          <p><%= data.admin[i].name %></p>
+      </div>
+       <% } %>
+       </div>
+     </div>
+   </div>
+</div>
+<style>
+ .full-description{
+   display:none;
+ }
+ .less-description-btn{
+   display: none;
+ }
+</style>
+<div class="col-sm-8 col-xs-12 separator-community-admin" style="padding:0 10px 10px 10px;">
+
+ <div class="panel panel-default allSidesSoft" style="border-radius:0">
+   <div class="panel-heading center-all" style="border:0;border-radius:0">
+     About Community
+   </div>
+   <div class="panel-body" style="border:0;border-radius:0;overflow:scroll">
+     
+     
+         <p class="short-description center-all">
+          <%= data.description %>
+           
+         </p>
+         <div class="full-description">
+           <h4 style="text-align: left; box-sizing: inherit; margin: 0px;padding: 0; border: 0px; outline: 0px; vertical-align: baseline;"><strong style="color: inherit; font-family: inherit; background-color: initial;">The FINANCE CLUB focuses&nbsp;on helping finance professionals to grow their industry network, enhance their career and close more deals.</strong><br><span style="font-size: 14px;"><strong><br></strong></span></h4><p style="box-sizing: inherit; margin: 0px; border: 0px; outline: 0px; vertical-align: baseline; line-height: 24px; white-space: pre-wrap; color: rgba(0, 0, 0, 0.6);"><ul><li><strong style="background-color: initial;">Accounting</strong><br></li><li><strong style="background-color: initial;">Banking</strong><br></li><li><strong style="background-color: initial;">Capital Markets</strong><br></li><li><strong style="background-color: initial;">Financial Services</strong><br></li><li><strong style="background-color: initial;">Insurance</strong><br></li><li><strong style="background-color: initial;">Investment Banking </strong><br></li><li><strong style="background-color: initial;">Investment Management</strong><br></li><li><strong style="background-color: initial;">Real Estate</strong><br></li><li><strong style="background-color: initial;">Venture Capital</strong><br></li><li><strong style="background-color: initial;">Private Equity</strong><br></li></ul><h4><span style="box-sizing: inherit; margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: 0px 0px;"><strong>Benefits of group members:</strong></span></h4><span style="box-sizing: inherit; margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: 0px 0px;">+ CONNECT with other finance professionals from all  
+over the world
++ FIND the next finance job or employee
++ LEARN from and participate in finance discussions
++ NETWORKING events will be organized in major 
+cities (i.e. London, New York, Frankfurt)
++ INDUSTRY and LOCAL subgroups will help you 
+further  
+
+</span><h3><span style="box-sizing: inherit; margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: 0px 0px;">Join the Finance Club now, it is free.</span></h3></p>
+         </div>
+     
+   </div>
+   
+     <div class="panel-footer center-all">
+             <a class="btn btn-default btn-sm community-profile-btn more-description-btn" onclick="showHideDescription(1)" style="cursor:pointer">
+               more <i class="fa fa-info-circle"></i>
+             </a>
+             <a class="btn btn-default btn-sm community-profile-btn less-description-btn" onclick="showHideDescription(0)" style="cursor:pointer">
+               less <i class="fa fa-info-circle"></i>
+             </a>
+     </div>
+   
+ </div>
+
+   <div class="col-sm-12" id="needGlobalInProfile" style="padding:0">
+       <!--Here global will come-->
+   </div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>

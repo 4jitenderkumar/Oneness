@@ -1,0 +1,64 @@
+    <!-- jQuery -->
+
+    <!-- Bootstrap Core JavaScript -->
+
+    
+
+
+    <!-- Menu Toggle Script -->
+ 
+
+<script type="text/javascript">
+    $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+    });
+ 
+    $("#menu-toggle-pc").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled-pc");
+       $('#menu ul').hide();
+    });
+ 
+ //----------------------On Hoover or onclick menuBar-------------------------------
+   function openSideNav(){
+       $("#wrapper").toggleClass("toggled-pc");
+       $('#menu ul').hide();
+   }
+    // $("#sidebar-wrapper").hover(function(){
+    //   $("#wrapper").toggleClass("toggled-pc");
+    //   $('#menu ul').hide();
+    // });
+ //----------------------On Hoover or onclick menuBar-------------------------------
+ 
+    function initMenu() {
+       // $("#wrapper").toggleClass("toggled-pc");
+       // $('#menu ul').hide();
+ 
+       $('#menu ul').hide();
+       $('#menu ul').children('.current').parent().show();
+       $('#menu li a').click(
+          function() {
+             var checkElement = $(this).next();
+             if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                return false;
+             }
+             if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                $('#menu ul:visible').slideUp('normal');
+                checkElement.slideDown('normal');
+                return false;
+             }
+          }
+       );
+    }
+    $(document).ready(function() {
+       initMenu();
+    });
+ </script>
+
+<script>
+        var selector = '.nav li';
+        $(selector).removeClass('active');
+        $('#community-panel-nav').addClass('active');
+</script>
+

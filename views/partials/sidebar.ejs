@@ -1,0 +1,87 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" style="margin-top:60px">
+       <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+    
+         <li class="mobile-view-dp">
+           <div style="margin-right: 10px">
+                 <center>
+                <img src="" style="height: 60px;width: 60px;border-radius:50%">
+            </center>
+              </div>
+         </li>
+    
+         <li class="onlyForPcNav">
+           <a  onclick="openSideNav()">
+             <span class="fa-stack fa-lg pull-left">
+               <i class="fa fa-bars fa-stack-1x "></i>
+             </span>Oneness
+           </a>
+         </li>
+    
+         
+           <li id="home-nav">
+              <a href="/admin/profile"><span class="fa-stack fa-lg pull-left">
+                <i class="fa fa-home fa-stack-1x "></i></span>Home
+              </a>
+           </li>
+         
+    
+         
+    
+          
+              <li id="add-user-nav">
+                <a href="/admin/adduser"><span class="fa-stack fa-lg pull-left">
+                  <i class="fa fa-plus-square fa-stack-1x "></i></span>
+                  Add User
+                </a>
+              </li>
+          
+    
+          
+    
+          
+            <li id="user-list-nav">
+               <a href="/admin/userList"> <span class="fa-stack fa-lg pull-left">
+                 <i class="fa fa-list-ul fa-stack-1x "></i></span>Users List</a>
+            </li>
+          
+    
+          
+            <li id="community-list-nav">
+               <a href="/community/communityList"><span class="fa-stack fa-lg pull-left">
+                 <i class="fa fa-list-alt fa-stack-1x "></i></span>Community List</a>
+            </li>
+          
+    
+          
+            <li id="switch-asuser-nav">
+              <a onclick="switchState('Switch As User')"><span class="fa-stack fa-lg pull-left">
+                <i class="fa fa-toggle-off fa-stack-1x "></i></span>
+                Switch As User
+              </a>
+            </li>
+          
+    
+          
+            <li id="admin-tag-panel">
+              <a href="/tag"><span class="fa-stack fa-lg pull-left">
+                <i class="fa fa-tags fa-stack-1x "></i></span>Tag Panel</a>
+            </li>
+          
+    
+          <li id="change-password-nav">
+            <a href="/changePassword"><span class="fa-stack fa-lg pull-left">
+              <i class="fa fa-lock fa-stack-1x "></i></span>
+              Change Password
+            </a>
+          </li>
+    
+          <li>
+              <a onclick="logout()"><span class="fa-stack fa-lg pull-left">
+                <i class="fa fa-sign-out-alt fa-stack-1x "></i></span>Logout
+              </a>
+           </li>
+           
+       </ul>
+    </div>
