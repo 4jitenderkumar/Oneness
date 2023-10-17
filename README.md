@@ -8,7 +8,7 @@ https://github.com/4jitenderkumar/Oneness/assets/46212157/749c07d7-188c-4178-9e4
 ### To start this project follow the below instructions:
 #### 1. After cloning to local please install the dependencies: 
 ```
-run npm install
+npm install
 ```
 #### 2. Once all  the dependencies are done start the project by using this cmd : 
 ```
