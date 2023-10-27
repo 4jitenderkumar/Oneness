@@ -14,7 +14,10 @@ var flash = require('connect-flash');// to display errors or sucessfull messages
 var app = express();
 
 mongoose.Promise = global.Promise;//plugin our own mongoose library ELSE deprecated WARNING
-mongoose.connect('mongodb://localhost/oneness');//because we only want to use 1 database at a time,IF we want to use several databases at a time then mongoose.createconnection 
+//For localhost
+//mongoose.connect('mongodb://localhost/oneness');//because we only want to use 1 database at a time,IF we want to use several databases at a time then mongoose.createconnection 
+//For cloud
+mongoose.connect('mongodb+srv://oneness:oneness@oneness.f20qcfy.mongodb.net/oneness?retryWrites=true&w=majority');//because we only want to use 1 database at a time,IF we want to use several databases at a time then mongoose.createconnection 
 
 require('./config/passport');
 require('./secret/secret.js');
